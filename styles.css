@@ -1,39 +1,79 @@
 body {
-    margin: 0;
-}
-    
-.wrapper {
-  height: 100vh;
-}
-    
-nav {
-  height: 44px;
-  background: #323232;
-  text-align: center;
-  opacity: 0.5;
-}
-    
-nav ul {
+  background-color: #C5EAFF;
   display: flex;
-  max-width: 1200px;
-  justify-content: space-around;
+  flex-direction: column;
   align-items: center;
-  padding: 0;
-  margin: 0 auto; 
-  list-style-type: none;
+  text-align: center;
 }
-        
-nav a {
-  display: inline-block;
-  height: 44px; /* apply the height here, pushes the li / ul to be the correct height */
-  line-height: 44px; /* to get vertical centering */
-  color: white;
-  font-size: 15px;
-  font-weight: 100;
-  text-decoration: none;
-  transition: 0.3s;
+
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  width: 70vw;
 }
-    
-nav a:hover {
-  color: #B8B8B8;
+
+header {
+  flex-basis: 100%;
+  align-items: center;
+  justify-content: space-between;
+  display: flex;
+  background-color: white;
+  border: 2px black solid;
+  padding: 1%;
+  gap: 1vw;
+}
+
+.header-image {
+  max-width: 11%;
+  height: auto;
+}
+
+.header-title {
+  background-color: #C5CDFF;
+  border: 2px black solid;
+  padding: 2% 6%;
+  border-radius: 40px;
+}
+
+nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1vh;
+  padding: 3%;
+  flex-basis: 15%;
+  background-color: #C5CDFF;
+  border: 2px black solid;
+  min-height: 60vh;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+  font-size: x-large;
+}
+
+a:hover {
+  color: #B45D2C;
+}
+
+.content {
+  flex: 1;
+  background-color: #B0EDE4;
+  border: 2px black solid;
+  padding: 3% 5%;
+}
+
+.content > p {
+  font-size: large;
+  text-align: justify;
+}
+
+footer {
+  border: 2px black solid;
+  background-color: white;
+  flex-basis: 100%;
+  padding: 1%;
 }
