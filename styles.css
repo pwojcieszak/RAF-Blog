@@ -39,7 +39,7 @@ header {
 nav {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;    /* center | flex-start */
   align-items: center;
   gap: 1vh;
   padding: 3%;
@@ -59,16 +59,64 @@ a:hover {
   color: #B45D2C;
 }
 
+.selected {
+  color: #B45D2C;
+}
+
+.selected:hover {
+  color: #a87d63;
+}
+
+
 .content {
   flex: 1;
   background-color: #B0EDE4;
   border: 2px black solid;
   padding: 3% 5%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start ;
 }
 
-.content > p {
+.content p {
   font-size: large;
   text-align: justify;
+}
+
+.content-text {
+  flex: 5;
+}
+
+.content-text > h2 {
+  text-align: left;
+}
+
+hr {
+  height:2px;
+  border-width:0;
+  background-color:black;
+}
+
+.content-card {
+  flex: 1;
+  border: 1px black solid;
+  padding: 1%;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  margin: 7% 0% 0% 4%;
+}
+
+.content-card img {
+  max-width: 30vh;
+  height: auto;
+  border: 1px black solid;
+}
+
+table, th, td{
+  border: 1px black solid;
+  border-collapse: collapse;
 }
 
 footer {
