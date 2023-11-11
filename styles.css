@@ -137,8 +137,10 @@ footer {
   nav {
     min-height: fit-content;
     flex-basis: 100%;
-  }
+  }  
+}
 
+@media only screen and (max-width: 1200px) {
   .content {
     align-items: stretch;
     justify-content: center;
