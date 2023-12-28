@@ -7,33 +7,9 @@ router.get('/', function(req, res, next) {
 });
 
 /* GET home page. */
-router.get('/canberra', function(req, res, next) {
-  res.render('canberra');
-});
-
-/* GET home page. */
-router.get('/hunter', function(req, res, next) {
-  res.render('hunter');
-});
-
-/* GET home page. */
-router.get('/lincoln', function(req, res, next) {
-  res.render('lincoln');
-});
-
-/* GET home page. */
-router.get('/meteor', function(req, res, next) {
-  res.render('meteor');
-});
-
-/* GET home page. */
-router.get('/valiant', function(req, res, next) {
-  res.render('valiant');
-});
-
-/* GET home page. */
-router.get('/venom', function(req, res, next) {
-  res.render('venom');
+router.get('/:planeName', function(req, res, next) {
+  let planeName = req.params.planeName;
+  res.render(planeName);
 });
 
 module.exports = router;
