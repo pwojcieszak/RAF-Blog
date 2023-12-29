@@ -1,0 +1,56 @@
+[
+    {
+        "name": "Canberra",
+        "producer": "English Electric",
+        "model": "B Mk 2",
+        "engine": "2 x Rolls-Royce Avon Mk.101",
+        "maxSpeed": "880 km/h",
+        "maxAlt": "12 192 m",
+        "img": "canberra.jpg"
+    },
+    {
+        "name": "Hunter",
+        "producer": "Hawker",
+        "model": "F.1",
+        "engine": "Rolls-Royce Avon Mk.113",
+        "maxSpeed": "1 108 km/h",
+        "maxAlt": "14 000 m",
+        "img": "hunter.jpg"
+    },
+    {
+        "name": "Lincoln",
+        "producer": "Avro",
+        "model": "B Mk II",
+        "engine": "4 х Rolls-Royce Merlin-68A",
+        "maxSpeed": "513 km/h",
+        "maxAlt": "9 296 m",
+        "img": "lincoln.webp"
+    },
+    {
+        "name": "Meteor",
+        "producer": "Gloster",
+        "model": "F Mk 8 G.41K",
+        "engine": "2 х Rolls-Royce Derwent 8",
+        "maxSpeed": "962 km/h",
+        "maxAlt": "12 500 m",
+        "img": "meteor.jpg"
+    },
+    {
+        "name": "Valiant",
+        "producer": "Vickers",
+        "model": "B.K.1",
+        "engine": "4 x Rolls-Royce Avon RA28",
+        "maxSpeed": "912 km/h",
+        "maxAlt": "16 460 m",
+        "img": "valiant.png"
+    },
+    {
+        "name": "Venom",
+        "producer": "De Havilland",
+        "model": "FB.4",
+        "engine": "de Havilland Ghost-103",
+        "maxSpeed": "1 027 km/h",
+        "maxAlt": "12 192 m",
+        "img": "venom.jpg"
+    }
+]
