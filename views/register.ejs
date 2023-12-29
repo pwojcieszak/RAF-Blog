@@ -28,22 +28,22 @@
         </button>
       <% } else{ %>  
         <button class="login-button" onclick="window.location.href='/login';">
-          <a class="login-label" >Zaloguj się</a>
+          <a class="login-label" >Log in</a>
         </button>
       <% } %>
     </nav>
     
     <div class="content">
       <div class="form">
-        <h2>REJESTRACJA</h2>
+        <h2>REGISTRATION</h2>
         <form method="post" action="/users/register">
-          <input required class="option" type="nickname" id="nickname" name="nickname" placeholder="Nick"><br>
+          <input required class="option" type="nickname" id="nickname" name="nickname" placeholder="Nickname"><br>
           <input required class="option" type="email" id="email" name="email" placeholder="E-mail"><br>
-          <input required class="option" type="password" id="password" name="password" placeholder="Hasło"><br>
-          <button class="option form-button" type="submit">ZAREJESTRUJ</button>   
+          <input required class="option" type="password" id="password" name="password" placeholder="Password"><br>
+          <button class="option form-button" type="submit">REGISTER</button>   
         </form>
         <a href="/login">
-            <button class="option form-button">ZALOGUJ SIĘ</button>
+            <button class="option form-button">SIGN IN</button>
         </a>
       </div>
     </div>
