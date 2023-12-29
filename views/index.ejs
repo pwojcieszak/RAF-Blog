@@ -17,12 +17,20 @@
     </header>
     
     <nav>
-      <a href="/canberra">Canberra</a><br/>
-      <a href="/hunter">Hunter</a><br/>
-      <a href="/lincoln">Lincoln</a><br/>
-      <a href="/meteor">Meteor</a><br/>
-      <a href="/valiant">Valiant</a><br/>
-      <a href="/venom">Venom</a>
+      <% planes.forEach(plane => { %>
+        <a href="/<%= plane.name.toLowerCase() %>">
+          <%= plane.name %>
+        </a><br/>
+      <% }); %>
+      <% if(user){ %>
+        <button class="login-button" onclick="window.location.href='/users/logout';">
+            <a class="login-label" >Hello <%= user.nickname %>. Click to logout</a>
+        </button>
+      <% } else{ %>  
+        <button class="login-button" onclick="window.location.href='/login';">
+          <a class="login-label" >Zaloguj się</a>
+        </button>
+      <% } %>
     </nav>
     
     <div class="content">

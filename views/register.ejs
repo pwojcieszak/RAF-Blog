@@ -34,36 +34,18 @@
     </nav>
     
     <div class="content">
-        <div class="content-text">
-            <h2><%= currentPlane.producer %> <%= currentPlane.name %></h2>
-            <hr>
-            <p>
-              <%- currentPlane.shortDesc %>
-            </p>
-        </div>
-        <div class="content-card">
-            <img src="images/<%= currentPlane.img %>" alt="<%= currentPlane.name %> image">
-            <table>
-                <th colspan="2"><%= currentPlane.name %> <%= currentPlane.model %></th>
-                <tr>
-                    <td>Engine</td>
-                    <td><%= currentPlane.engine %></td>
-                </tr>
-                <tr>
-                    <td>Max speed</td>
-                    <td><%= currentPlane.maxSpeed %></td>
-                </tr>
-                <tr>
-                    <td>Max altitude</td>
-                    <td><%= currentPlane.maxAlt %></td>
-                </tr>
-            </table>
-        </div>
-        <div>
-            <p>
-              <%- currentPlane.longDesc %>
-            </p>
-        </div>
+      <div class="form">
+        <h2>REJESTRACJA</h2>
+        <form method="post" action="/users/register">
+          <input class="option" type="nickname" id="nickname" name="nickname" placeholder="Nick"><br>
+          <input class="option" type="email" id="email" name="email" placeholder="E-mail"><br>
+          <input class="option" type="password" id="password" name="password" placeholder="Hasło"><br>
+          <button class="option form-button" type="submit">ZAREJESTRUJ</button>   
+        </form>
+        <a href="/login">
+            <button class="option form-button">ZALOGUJ SIĘ</button>
+        </a>
+      </div>
     </div>
     
     <footer>

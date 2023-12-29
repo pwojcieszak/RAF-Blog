@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <title>Document</title>
+</head>
+<body>
+  <div class="wrapper">
+    <header>
+      <img src="images/raf.png" alt="RAF Roundels" class="header-image">
+      <div class="header-title">
+        <a href="/"><h1>British Aviation of the Cold War Era</h1></a>
+      </div>
+      <img src="images/raf.png" alt="RAF Roundels" class="header-image">
+    </header>
+    
+    <nav>
+        <% planes.forEach(plane => { %>
+            <a href="/<%= plane.name.toLowerCase() %>">
+              <%= plane.name %>
+            </a><br/>
+          <% }); %>
+          <% if(user){ %>
+            <button class="login-button" onclick="window.location.href='/users/logout';">
+                <a class="login-label" >Hello <%= user.nickname %>. Click to logout</a>
+            </button>
+          <% } else{ %>  
+            <button class="login-button" onclick="window.location.href='/login';">
+              <a class="login-label" >Zaloguj się</a>
+            </button>
+          <% } %>
+    </nav>
+    
+    <div class="content">
+      <div class="form">
+        <h2>LOGOWANIE</h2>
+        <form method="post" action="/users/login">
+            <input class="option" type="email" id="email" name="email" placeholder="E-mail"><br>
+            <input class="option" type="password" id="password" name="password" placeholder="Hasło"><br>
+            <button class="option form-button" type="submit">ZALOGUJ</button>   
+        </form>
+        <a href="/register">
+            <button class="option form-button">ZAREJESTRUJ SIĘ</button>
+        </a>
+      </div>
+    </div>
+    
+    <footer>
+      @2023 Piotr Wojcieszak 
+    </footer>
+
+  </div>
+      
+</body>
+</html>
