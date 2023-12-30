@@ -41,6 +41,8 @@ router.get('/:planeName', function(req, res, next) {
 
   if (currentPlane) {
     const comments = Comment.getCommentsByName(planeName);
+    console.log(planeName);
+    console.log(comments);
     res.render('article', { currentPlane, planes, comments });
   } else {
     res.status(404).send('Plane not found');

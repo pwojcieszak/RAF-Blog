@@ -18,7 +18,7 @@ class Comment {
   static getCommentsByName(planeName) {
     let formattedPlaneName = planeName.charAt(0).toUpperCase() + planeName.slice(1);
     const comments = Comment.getAllComments();
-    return comments.find(comment => comment.topic === formattedPlaneName);
+    return comments.filter(comment => comment.topic === formattedPlaneName);
   }
 }
 

@@ -64,6 +64,14 @@
               <%- currentPlane.longDesc %>
             </p>
         </div>
+        <div class="comments">
+          <h2>Comments</h2>
+          <hr>
+          <% comments.forEach(comment => { %>
+            <span class="nick"><%= comment.nickname %></span>
+            <span class="content"><%= comment.content %></span>
+          <% }); %>
+        </div>
     </div>
     
     <footer>
