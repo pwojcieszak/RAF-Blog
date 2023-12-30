@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const Plane = require('../models/plane');
 const planes = Plane.getAllPlanes();
+const Comment = require('../models/comment');
 
 
 /* GET home page. */
@@ -37,10 +38,12 @@ router.get('/register', function(req, res, next) {
 router.get('/:planeName', function(req, res, next) {
   let planeName = req.params.planeName;
   let currentPlane = Plane.getPlaneByName(planeName);
-  console.log(currentPlane);
 
   if (currentPlane) {
-    res.render('article', { currentPlane, planes });
+    const comments = Comment.getCommentsByName(planeName);
+    console.log(planeName);
+    console.log(comments);
+    res.render('article', { currentPlane, planes, comments });
   } else {
     res.status(404).send('Plane not found');
   }

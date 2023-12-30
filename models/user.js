@@ -10,7 +10,7 @@ class User {
       const users = JSON.parse(usersData);
       return users;
     } catch (error) {
-      console.error('Error reading planes file:', error.message);
+      console.error('Error reading users file:', error.message);
       return [];
     }
   }

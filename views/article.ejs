@@ -18,7 +18,7 @@
     
     <nav>
       <% planes.forEach(plane => { %>
-        <a href="/<%= plane.name.toLowerCase() %>">
+        <a href="/<%= plane.name.toLowerCase() %>" class="<%= plane.name === currentPlane.name ? 'selected' : '' %>">
           <%= plane.name %>
         </a><br/>
       <% }); %>
@@ -63,6 +63,14 @@
             <p>
               <%- currentPlane.longDesc %>
             </p>
+        </div>
+        <div class="comments">
+          <h2>Comments</h2>
+          <hr>
+          <% comments.forEach(comment => { %>
+            <span class="nick"><%= comment.nickname %></span>
+            <span class="content"><%= comment.content %></span>
+          <% }); %>
         </div>
     </div>
     
