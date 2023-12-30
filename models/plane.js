@@ -17,7 +17,6 @@ class Plane {
 
   static getPlaneByName(planeName) {
     let formattedPlaneName = planeName.charAt(0).toUpperCase() + planeName.slice(1);
-    console.log(formattedPlaneName);
     const planes = Plane.getAllPlanes();
     return planes.find(plane => plane.name === formattedPlaneName);
   }
