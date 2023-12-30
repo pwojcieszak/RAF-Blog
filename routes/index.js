@@ -37,7 +37,6 @@ router.get('/register', function(req, res, next) {
 router.get('/:planeName', function(req, res, next) {
   let planeName = req.params.planeName;
   let currentPlane = Plane.getPlaneByName(planeName);
-  console.log(currentPlane);
 
   if (currentPlane) {
     res.render('article', { currentPlane, planes });

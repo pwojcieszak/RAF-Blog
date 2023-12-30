@@ -18,7 +18,7 @@
     
     <nav>
       <% planes.forEach(plane => { %>
-        <a href="/<%= plane.name.toLowerCase() %>">
+        <a href="/<%= plane.name.toLowerCase() %>" class="<%= plane.name === currentPlane.name ? 'selected' : '' %>">
           <%= plane.name %>
         </a><br/>
       <% }); %>
