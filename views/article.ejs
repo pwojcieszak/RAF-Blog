@@ -64,32 +64,37 @@
               <%- currentPlane.longDesc %>
             </p>
         </div>
+        <hr><br>
         <div class="comments">
           <h2>Comments</h2>
-          <hr>
-
-          <% if(user){ %>
-            <form action="/comments/post" method="post">
-              <textarea name="content" required></textarea>
-              <input type="hidden" name="nickname" value="<%= user.nickname %>">
-              <input type="hidden" name="topic" value="<%= currentPlane.name %>">
-              <button type="submit" name="post" value="post">Post</button>
-            </form>
-          <% } else{ %>  
-            <a href="/login">Login to leave a comment</a>
-          <% } %>
+          <div class="comments-form">
+            <% if(user){ %>
+              <form action="/comments/post" method="post">
+                <textarea name="content" placeholder="Leave a comment..." required></textarea>
+                <input type="hidden" name="nickname" value="<%= user.nickname %>">
+                <input type="hidden" name="topic" value="<%= currentPlane.name %>">
+                <button type="submit" name="post" value="post">Post</button>
+              </form>
+            <% } else{ %>  
+              <a href="/login">Login to leave a comment</a>
+            <% } %>
+          </div>
           
           <% comments.forEach(comment => { %>
             <div class="comment">
-              <h3 class="nick"><%= comment.nickname %></h3>
-              <span class="content"><%= comment.content %></span>
+              <div>
+                <h3><%= comment.nickname %></h3>
+                <span><%= comment.content %></span>
+              </div>
               <% if(user && user.nickname == comment.nickname){ %>
-                <form action="/comments/delete" method="post">
-                  <input type="hidden" name="nickname" value="<%= user.nickname %>">
-                  <input type="hidden" name="topic" value="<%= currentPlane.name %>">
-                  <input type="hidden" name="content" value="<%= comment.content %>">
-                  <button type="submit" name="delete" value="delete">Delete</button>
-                </form>
+                <div class="deleteComment">
+                  <form action="/comments/delete" method="post">
+                    <input type="hidden" name="nickname" value="<%= user.nickname %>">
+                    <input type="hidden" name="topic" value="<%= currentPlane.name %>">
+                    <input type="hidden" name="content" value="<%= comment.content %>">
+                    <button type="submit" name="delete" value="delete">Delete comment</button>
+                  </form>
+                </div>
               <% } %>
             </div>
             <% }); %>

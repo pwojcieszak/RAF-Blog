@@ -6,6 +6,10 @@ body {
   text-align: center;
 }
 
+button {
+  cursor: pointer;
+}
+
 .wrapper {
   display: flex;
   flex-wrap: wrap;
@@ -138,7 +142,6 @@ footer {
 
 .login-label:hover {
   color:black;
-  cursor: pointer;
 }
 
 .option {
@@ -148,6 +151,55 @@ footer {
 
 .form-button {
   width: 100%;
+}
+
+.form {
+  margin: 10% auto;
+}
+
+/* Comments */
+.comments {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-top: 1px solid black;
+  margin-top: 5%;
+}
+
+.comments-form {
+  margin-bottom: 3%;
+}
+
+.comments-form a {
+  color: blue;
+}
+
+.comments-form a:hover {
+  color: rgb(153, 100, 2);
+}
+
+.comments textarea {
+  width: 98%;
+  min-height: 75px;
+}
+
+.comment {
+  text-align: left;
+  background-color: #7c6c63;
+  border: 1px black solid;
+  border-radius: 3px;
+  margin: 7px;
+  padding: 2% 4%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.deleteComment button{
+  background-color: rgb(187, 17, 17);
+}
+
+.comment h3 {
+  margin-top: 0;
 }
 
 @media only screen and (max-width: 768px) {
