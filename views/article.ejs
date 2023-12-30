@@ -67,10 +67,32 @@
         <div class="comments">
           <h2>Comments</h2>
           <hr>
+
+          <% if(user){ %>
+            <form action="/comments/post" method="post">
+              <textarea name="content" required></textarea>
+              <input type="hidden" name="nickname" value="<%= user.nickname %>">
+              <input type="hidden" name="topic" value="<%= currentPlane.name %>">
+              <button type="submit" name="post" value="post">Post</button>
+            </form>
+          <% } else{ %>  
+            <a href="/login">Login to leave a comment</a>
+          <% } %>
+          
           <% comments.forEach(comment => { %>
-            <span class="nick"><%= comment.nickname %></span>
-            <span class="content"><%= comment.content %></span>
-          <% }); %>
+            <div class="comment">
+              <h3 class="nick"><%= comment.nickname %></h3>
+              <span class="content"><%= comment.content %></span>
+              <% if(user && user.nickname == comment.nickname){ %>
+                <form action="/comments/delete" method="post">
+                  <input type="hidden" name="nickname" value="<%= user.nickname %>">
+                  <input type="hidden" name="topic" value="<%= currentPlane.name %>">
+                  <input type="hidden" name="content" value="<%= comment.content %>">
+                  <button type="submit" name="delete" value="delete">Delete</button>
+                </form>
+              <% } %>
+            </div>
+            <% }); %>
         </div>
     </div>
     
