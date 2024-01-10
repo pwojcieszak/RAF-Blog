@@ -26,12 +26,12 @@ router.get('/login', function(req, res, next) {
 /* GET register view. */
 router.get('/register', function(req, res, next) {
   const user = req.session.user || null;
-
+  const success = req.query.success || true;
   // Check if user is defined before accessing properties
   if (user) {
     res.redirect('/');
   } else {
-    res.render('register', { planes });
+    res.render('register', { planes, success });
   }
 });
 

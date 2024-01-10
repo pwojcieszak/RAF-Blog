@@ -59,6 +59,7 @@ router.post('/register', function(req, res, next) {
   } else {
     console.log('Registration failed');
     res.status(401).json({ message: 'Already created account with given e-mail address' });
+    res.redirect('../register?success=false')
   }
 });
 

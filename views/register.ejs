@@ -36,6 +36,9 @@
     <div class="content">
       <div class="form">
         <h2>Registration</h2>
+        <% if(success == "false"){ %>
+          <span class="warning">Already created account with given e-mail address</span>
+        <% } %>
         <form method="post" action="/users/register">
           <input required class="option" type="nickname" id="nickname" name="nickname" placeholder="Nickname"><br>
           <input required class="option" type="email" id="email" name="email" placeholder="E-mail"><br>
