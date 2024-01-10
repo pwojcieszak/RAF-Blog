@@ -157,6 +157,10 @@ footer {
   margin: 10% auto;
 }
 
+.warning {
+  color: red;
+}
+
 /* Comments */
 .comments {
   display: flex;

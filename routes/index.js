@@ -14,12 +14,12 @@ router.get('/', function(req, res, next) {
 /* GET login view. */
 router.get('/login', function(req, res, next) {
   const user = req.session.user || null;
-
+  const success = req.query.success || true;
   // Check if user is defined before accessing properties
   if (user) {
     res.redirect('/');
   } else {
-    res.render('login', { planes });
+    res.render('login', { planes, success});
   }
 });
 

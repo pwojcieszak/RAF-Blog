@@ -5,7 +5,7 @@ const usersData = User.getAllUsers();
 const bcrypt = require('bcryptjs');
 const fs = require('fs');
 
-/* GET users listing. */
+/* POST login page. */
 router.post('/login', function(req, res, next) {
   const { email, password } = req.body;
   console.log('Received credentials:', email, password);
@@ -19,10 +19,10 @@ router.post('/login', function(req, res, next) {
       nickname: user.nickname,
       email: user.email,
     };
-    res.redirect('../')
+    res.redirect('../');
   } else {
     console.log('Login failed');
-    res.status(401).json({ message: 'Invalid credentials' });
+    res.redirect('../login?success=false')
   }
 });
 
