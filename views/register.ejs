@@ -37,7 +37,7 @@
       <div class="form">
         <h2>Registration</h2>
         <% if(success == "false"){ %>
-          <span class="warning">Already created account with given e-mail address</span>
+          <span class="warning">Account with given e-mail/nickname already exists</span>
         <% } %>
         <form method="post" action="/users/register">
           <input required class="option" type="nickname" id="nickname" name="nickname" placeholder="Nickname"><br>

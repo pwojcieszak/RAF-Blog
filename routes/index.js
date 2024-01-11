@@ -2,7 +2,6 @@ var express = require('express');
 var router = express.Router();
 const Plane = require('../models/plane');
 const Comment = require('../models/comment');
-const fs = require('fs');
 
 
 /* GET home page. */
