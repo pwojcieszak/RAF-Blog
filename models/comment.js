@@ -1,60 +1,55 @@
-const fs = require('fs');
-const path = require('path');
-
-const filePath = path.join(__dirname, '../data/comments.json');
+const pool = require('../config/db');
 
 class Comment {
-  static getAllComments() {
+  static async getAllComments() {
     try {
-      const commentsData = fs.readFileSync(filePath, 'utf8');
-      const comments = JSON.parse(commentsData);
-      return comments;
-    } catch (error) {
-      console.error('Error reading comments file:', error.message);
-      return [];
+      const connection = await pool.getConnection();
+      const [rows] = await connection.query('SELECT * FROM comments;');
+      connection.release();
+      return rows;
+    } catch (err) {
+      console.error(err) 
     }
   }
 
-  static getCommentsByName(planeName) {
-    let formattedPlaneName = planeName.charAt(0).toUpperCase() + planeName.slice(1);
-    const comments = Comment.getAllComments();
-    return comments.filter(comment => comment.topic === formattedPlaneName);
-  }
-
-  static addComment(content, nickname, topic) {
-    const comments = Comment.getAllComments();
-    comments.push({
-      content: content,
-      nickname: nickname,
-      topic: topic,
-    });
-
-    // Saving edited array
-    const jsonString = JSON.stringify(comments, null, 2);
-    fs.writeFile('data/comments.json', jsonString, 'utf8', (err) => {
-      if (err) {
-        console.error('Error writing JSON file:', err);
-        return true;
-      } else {
-        console.log('Array saved to JSON file successfully!');
-        return false;
-      }
-    });
-  }
-
-  static deleteCommentByDetails(content, nickname, topic) {
-    const comments = Comment.getAllComments();
-    const updatedComments = comments.filter(comment =>
-      comment.content !== content ||
-      comment.nickname !== nickname ||
-      comment.topic !== topic
-    );
+  static async getCommentsByTopic(planeName) {
     try {
-      fs.writeFileSync(filePath, JSON.stringify(updatedComments, null, 2), 'utf8');
-      return true; 
-    } catch (error) {
-      console.error('Error writing to comments file:', error.message);
-      return false;
+      const connection = await pool.getConnection();
+      const [rows] = await connection.query('SELECT * FROM comments WHERE topic  = ?;', [planeName]);
+      connection.release();
+      return rows;
+    } catch (err) {
+      console.error(err) 
+    }
+  }
+
+  static async addComment(content, nickname, topic) {
+    try {
+      const connection = await pool.getConnection();
+      const [rows] = await connection.query(
+        "INSERT INTO `comments` (`topic`, `nickname`, `content`) VALUES (?, ?, ?)", 
+        [topic, nickname, content]);
+      connection.release();
+      return true;
+    } catch (err) {
+      console.log('Comment post failed');
+      console.error(err)
+      return false; 
+    }
+  }
+
+  static async deleteCommentByDetails(content, nickname, topic) {
+    try {
+      const connection = await pool.getConnection();
+      const [rows] = await connection.query(
+        "DELETE FROM `comments` WHERE `topic` = ? AND `nickname` = ? AND `content` = ?", 
+        [topic, nickname, content]);
+      connection.release();
+      return true;
+    } catch (err) {
+      console.log('Comment deletion failed');
+      console.error(err)
+      return false; 
     }
   }
 }

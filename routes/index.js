@@ -38,30 +38,27 @@ router.get('/:planeName', async function(req, res, next) {
   let planeName = req.params.planeName;
   let currentPlane = await Plane.getPlaneByName(planeName);
   if (currentPlane) {
-    const comments = Comment.getCommentsByName(planeName);
-    res.render('article', { currentPlane, planes: await Plane.getAllPlanes(), comments });
+    let comments = await Comment.getCommentsByTopic(planeName);
+    let planes = await Plane.getAllPlanes();
+    res.render('article', { currentPlane, planes, comments });
   } else {
     res.status(404).send('Plane not found');
   }
 });
 
 /* POST add comment. */
-router.post('/comments/post', function(req, res, next) {
+router.post('/comments/post', async function(req, res, next) {
   const { content, nickname, topic } = req.body;
   Comment.addComment(content, nickname, topic);
   res.redirect('/' + topic);
 });
 
 /* POST delete comment. */
-router.post('/comments/delete', function(req, res, next) {
+router.post('/comments/delete', async function(req, res, next) {
   const { content, nickname, topic } = req.body;
-  console.log(content, nickname, topic);
-  const deletionSuccessful = Comment.deleteCommentByDetails(content, nickname, topic);
-  if (deletionSuccessful) {
-    console.log('Comment deleted successfully');
-  } else {
-    console.log('Error deleting comment');
-  }
+
+  Comment.deleteCommentByDetails(content, nickname, topic);
+
   let formattedTopic = topic.charAt(0).toLowerCase() + topic.slice(1);
   res.redirect('/' + formattedTopic);
 });
