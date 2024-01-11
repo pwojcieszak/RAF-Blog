@@ -147,11 +147,10 @@ footer {
 .option {
   width: 95%;
   margin: 2%;
+  box-sizing: border-box;
+
 }
 
-.form-button {
-  width: 100%;
-}
 
 .form {
   margin: 10% auto;

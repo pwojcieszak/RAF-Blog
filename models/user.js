@@ -28,14 +28,13 @@ class User {
         const passwordMatch = await bcrypt.compare(password, user.password);
   
         if (passwordMatch) {
-          console.log('Poprawne dane logowania');
           return user;
         } else {
-          console.log('Niepoprawne hasło');
+          console.log('Incorrect password');
           return false;
         }
       } else {
-        console.log('Użytkownik o podanej nazwie nie istnieje');
+        console.log("User doesn't exist");
         return true;
       }
     } catch (err) {
@@ -52,7 +51,7 @@ class User {
       connection.release();
       return true;
     } catch (err) {
-      console.log('Użytkownik o podanym adresie email lub nicku już istnieje');
+      console.log('User already exists');
       console.error(err)
       return false; 
     }
