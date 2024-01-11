@@ -1,25 +1,31 @@
-const fs = require('fs');
 const path = require('path');
-
-const filePath = path.join(__dirname, '../data/planes.json');
+const pool = require('../config/db');
+var mysql = require('mysql2/promise');
 
 class Plane {
-  static getAllPlanes() {
+  static async getAllPlanes() {
     try {
-      const planesData = fs.readFileSync(filePath, 'utf8');
-      const planes = JSON.parse(planesData);
-      return planes;
-    } catch (error) {
-      console.error('Error reading planes file:', error.message);
-      return [];
+      const connection = await pool.getConnection();
+      const [rows] = await connection.query('SELECT * FROM planes;');
+      connection.release();
+      return rows;
+    } catch (err) {
+      console.error(err) 
     }
   }
 
-  static getPlaneByName(planeName) {
-    let formattedPlaneName = planeName.charAt(0).toUpperCase() + planeName.slice(1);
-    const planes = Plane.getAllPlanes();
-    return planes.find(plane => plane.name === formattedPlaneName);
+  static async getPlaneByName(planeName) {
+    try {
+      const connection = await pool.getConnection();
+      const [rows] = await connection.query('SELECT * FROM planes WHERE name = ?;', [planeName]);
+      connection.release();
+      console.log(rows[0].name)
+      return rows[0];
+    } catch (err) {
+      console.error(err) 
+    }
   }
 }
+
 
 module.exports = Plane;
