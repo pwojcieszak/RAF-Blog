@@ -15,7 +15,7 @@ class Comment {
   static async getCommentsByTopic(planeName) {
     try {
       const connection = await pool.getConnection();
-      const [rows] = await connection.query('SELECT * FROM comments WHERE topic  = ?;', [planeName]);
+      const [rows] = await connection.query('SELECT * FROM comments WHERE topic  = ? ORDER BY comment_id DESC;', [planeName]);
       connection.release();
       return rows;
     } catch (err) {
