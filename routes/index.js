@@ -11,6 +11,8 @@ router.get('/', async function(req, res, next) {
 
 /* GET login view. */
 router.get('/login', async function(req, res, next) {
+  // Saving URL to redirect the user to after logging
+  req.session.returnTo = req.header('Referer') || '/';
   const user = req.session.user || null;
   const success = req.query.success || true;
   // Check if user is defined before accessing properties

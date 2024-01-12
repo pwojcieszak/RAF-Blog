@@ -13,7 +13,9 @@ router.post('/login', async function(req, res, next) {
       nickname: user.nickname,
       email: user.email,
     };
-    res.redirect('../');
+    const returnTo = req.session.returnTo || '../';
+    delete req.session.returnTo;
+    res.redirect(returnTo);
   } else {
     res.redirect('../login?success=false')
   }
@@ -30,8 +32,10 @@ router.post('/register', async function(req, res, next) {
       nickname: nickname,
       email: email,
     };
-   
-    res.redirect('../')
+    
+    const returnTo = req.session.returnTo || '../';
+    delete req.session.returnTo;
+    res.redirect(returnTo)
   } else {
     res.redirect('../register?success=false')
   }
@@ -40,7 +44,7 @@ router.post('/register', async function(req, res, next) {
 // Endpoint to Get a logout
 router.get('/logout',(req,res) => {
   req.session.destroy();
-  res.redirect('../');
+  res.redirect(req.header('Referer') || '../');
 });
 
 module.exports = router;
